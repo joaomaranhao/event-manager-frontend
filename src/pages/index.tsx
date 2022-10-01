@@ -1,9 +1,9 @@
 import axios from 'axios'
 import Head from 'next/head'
 import { useEffect, useState } from 'react'
+import { EmptyBox } from '../components/EmptyBox'
 
 import styles from '../styles/Home.module.css'
-import animation from '../../public/empty-box.json'
 
 export default function Home() {
   const [events, setEvents] = useState(null)
@@ -41,6 +41,9 @@ export default function Home() {
               <p>View all persons</p>
             </button>
           </div>
+        </div>
+        <div className={styles.display}>
+          {events ? '' : <EmptyBox />}
         </div>
         <footer className={styles.footer}>
           <p>Made with <span>♥</span> by João Maranhão</p>
