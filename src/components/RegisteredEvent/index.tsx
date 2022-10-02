@@ -8,12 +8,17 @@ type EventProps = {
 };
 
 export const RegisteredEvent = (registeredEvent: EventProps) => {
+  const formatedDate = new Date(registeredEvent.date).toLocaleDateString('pt-BR', {
+    day: '2-digit',
+    month: 'long',
+    year: 'numeric',
+  });
   return (
     <div className={styles.registeredEvent}>
       <div className={styles.eventData}>
         <h3>{registeredEvent.title}</h3>
         <p>{registeredEvent.description}</p>
-        <p>{registeredEvent.date}</p>
+        <p>{formatedDate}</p>
       </div>
       <div className={styles.commands}>
         <button>View</button>
