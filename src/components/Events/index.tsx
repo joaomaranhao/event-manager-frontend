@@ -11,14 +11,15 @@ type RegisteredEvent = {
 
 type EventsProps = {
   events: RegisteredEvent[];
+  setEvents: (events: any) => void;
 };
 
-export const Events = (events: EventsProps) => {
+export const Events = ({events, setEvents}: EventsProps) => {
   return (
     <div className={styles.container}>
       <h2>Events</h2>
-      {events.events.map((registeredEvent) => (
-        <RegisteredEvent key={registeredEvent.id} {...registeredEvent} />
+      {events.map((registeredEvent) => (
+        <RegisteredEvent setEvents={setEvents} key={registeredEvent.id} {...registeredEvent} />
       ))}
     </div>
   )

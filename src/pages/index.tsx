@@ -9,6 +9,7 @@ import { AddPersonModal } from '../components/AddPersonModal'
 
 import styles from '../styles/Home.module.css'
 import { Persons } from '../components/Persons'
+import { EditEventModal } from '../components/EditEventModal'
 
 const customStyles = {
   content: {
@@ -65,6 +66,7 @@ export default function Home() {
 
   const [eventModalIsOpen, setEventModalIsOpen] = useState(false)
   const [personModalIsOpen, setPersonModalIsOpen] = useState(false)
+  const [editEventModalIsOpen, setEditEventModalIsOpen] = useState(false)
 
   function openEventModal() {
     setEventModalIsOpen(true)
@@ -80,6 +82,14 @@ export default function Home() {
 
   function closePersonModal() {
     setPersonModalIsOpen(false)
+  }
+
+  function openEditEventModal() {
+    setEditEventModalIsOpen(true)
+  }
+
+  function closeEditEventModal() {
+    setEditEventModalIsOpen(false)
   }
   
   return (
@@ -110,7 +120,7 @@ export default function Home() {
           </div>
           {display === 'events' ? (
             <div className={styles.display}>
-              {events.length != 0 ? <Events events={events} /> : <EmptyBox item='an event' />}
+              {events.length != 0 ? <Events setEvents={setEvents} events={events} /> : <EmptyBox item='an event' />}
             </div>
           ) : (
             <div className={styles.display}>
