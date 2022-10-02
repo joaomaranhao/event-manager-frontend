@@ -1,3 +1,4 @@
+import axios from 'axios';
 import styles from './RegisteredEvent.module.css'
 
 type EventProps = {
@@ -13,6 +14,11 @@ export const RegisteredEvent = (registeredEvent: EventProps) => {
     month: 'long',
     year: 'numeric',
   });
+
+  function deleteEvent() {
+    axios.delete(`http://localhost:3333/api/event/${registeredEvent.id}`);
+  }
+
   return (
     <div className={styles.registeredEvent}>
       <div className={styles.eventData}>
@@ -23,7 +29,7 @@ export const RegisteredEvent = (registeredEvent: EventProps) => {
       <div className={styles.commands}>
         <button>View</button>
         <button>Edit</button>
-        <button>Delete</button>
+        <button onClick={deleteEvent}>Delete</button>
       </div>
     </div>
   )

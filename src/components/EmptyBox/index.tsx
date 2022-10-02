@@ -3,10 +3,14 @@ import animation from '../../lotties/empty-box.json'
 
 import styles from './EmptyBox.module.css'
 
-export const EmptyBox = () => {
+type EmptyBoxProps = {
+  item: string
+}
+
+export const EmptyBox = ({item}: EmptyBoxProps) => {
   return (
     <div className={styles.emptyBox}>
-      <p>Whoa! Such emptyness... You should add an event!</p>
+      <p>Whoa! Such emptyness... You should add {item}!</p>
       <Lottie
         options={{
           loop: true,

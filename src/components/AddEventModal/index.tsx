@@ -7,6 +7,7 @@ interface ModalProps {
   onRequestClose: () => void
   style?: object
   fetchEvents: () => void
+  setEvents: (events: any) => void
 }
 
 interface IEvent {
@@ -15,7 +16,7 @@ interface IEvent {
   date: string
 }
 
-export const AddEventModal = ({ isOpen, onRequestClose, style, fetchEvents}: ModalProps) => {
+export const AddEventModal = ({ isOpen, onRequestClose, style, fetchEvents, setEvents}: ModalProps) => {
 
   function addEvent(event: IEvent) {
     axios.post('http://localhost:3333/api/event', {
@@ -39,7 +40,10 @@ export const AddEventModal = ({ isOpen, onRequestClose, style, fetchEvents}: Mod
     }
 
     addEvent(event)
-    fetchEvents()
+    axios.get('http://localhost:3333/api/event')
+      .then(res => {
+        setEvents(res.data)
+      })
     onRequestClose()
   }
 
