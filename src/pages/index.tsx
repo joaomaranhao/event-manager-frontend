@@ -2,6 +2,7 @@ import axios from 'axios'
 import Head from 'next/head'
 import { useEffect, useState } from 'react'
 import { EmptyBox } from '../components/EmptyBox'
+import { Events } from '../components/Events'
 
 import styles from '../styles/Home.module.css'
 
@@ -9,9 +10,10 @@ export default function Home() {
   const [events, setEvents] = useState(null)
 
   useEffect(() => {
-    axios.get('http://localhost:3333/api/events')
+    axios.get('http://localhost:3333/api/event')
       .then(res => {
         setEvents(res.data)
+        console.log(res.data)
       })
   }, [])
   
@@ -41,9 +43,9 @@ export default function Home() {
               <p>View all persons</p>
             </button>
           </div>
-        </div>
-        <div className={styles.display}>
-          {events ? '' : <EmptyBox />}
+          <div className={styles.display}>
+            {events ? <Events events={events} /> : <EmptyBox />}
+          </div>
         </div>
         <footer className={styles.footer}>
           <p>Made with <span>♥</span> by João Maranhão</p>
