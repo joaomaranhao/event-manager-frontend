@@ -131,7 +131,7 @@ export default function Home() {
         <footer className={styles.footer}>
           <p>Made with <span>♥</span> by João Maranhão</p>
         </footer>
-        <AddEventModal isOpen={eventModalIsOpen} onRequestClose={closeEventModal} style={customStyles} setEvents={setEvents} />
+        <AddEventModal isOpen={eventModalIsOpen} onRequestClose={closeEventModal} style={customStyles} setEvents={setEvents} setDisplay={setDisplay} />
         <AddPersonModal isOpen={personModalIsOpen} onRequestClose={closePersonModal} style={customStyles} setPersons={setPersons} />
       </div>
     </>
