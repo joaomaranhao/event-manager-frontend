@@ -1,0 +1,48 @@
+.title {
+  margin: 0 0 1rem;
+  line-height: 1.15;
+  text-align: center;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.item > label {
+  margin-right: 1.5rem;
+  font-size: 1.5rem;
+}
+
+.item > input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #eaeaea;
+}
+
+.item > textarea {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #eaeaea;
+}
+
+.item > input:focus, .item > textarea:focus {
+  outline: none;
+  border-color: #0070f3;
+}
+
+.form > button {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #eaeaea;
+  background-color: #0070f3;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.form > button:hover {
+  background-color: #0060d3;
+}

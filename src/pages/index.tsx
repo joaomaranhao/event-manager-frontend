@@ -5,6 +5,7 @@ import { EmptyBox } from '../components/EmptyBox'
 import { Events } from '../components/Events'
 import Modal from 'react-modal'
 import { AddEventModal } from '../components/AddEventModal'
+import { AddPersonModal } from '../components/AddPersonModal'
 
 import styles from '../styles/Home.module.css'
 import { Persons } from '../components/Persons'
@@ -63,6 +64,7 @@ export default function Home() {
   }
 
   const [eventModalIsOpen, setEventModalIsOpen] = useState(false)
+  const [personModalIsOpen, setPersonModalIsOpen] = useState(false)
 
   function openEventModal() {
     setEventModalIsOpen(true)
@@ -70,6 +72,14 @@ export default function Home() {
 
   function closeEventModal() {
     setEventModalIsOpen(false)
+  }
+
+  function openPersonModal() {
+    setPersonModalIsOpen(true)
+  }
+
+  function closePersonModal() {
+    setPersonModalIsOpen(false)
   }
   
   return (
@@ -89,7 +99,7 @@ export default function Home() {
               <h2>Add Event</h2>
               <p>Add a new event</p>
             </button>
-            <button className={styles.command}>
+            <button className={styles.command} onClick={openPersonModal}>
               <h2>Add Person</h2>
               <p>Add a new person</p>
             </button>
@@ -111,7 +121,8 @@ export default function Home() {
         <footer className={styles.footer}>
           <p>Made with <span>♥</span> by João Maranhão</p>
         </footer>
-        <AddEventModal isOpen={eventModalIsOpen} onRequestClose={closeEventModal} style={customStyles} fetchEvents={fetchEvents} setEvents={setEvents} />
+        <AddEventModal isOpen={eventModalIsOpen} onRequestClose={closeEventModal} style={customStyles} setEvents={setEvents} />
+        <AddPersonModal isOpen={personModalIsOpen} onRequestClose={closePersonModal} style={customStyles} setPersons={setPersons} />
       </div>
     </>
   )
