@@ -61,11 +61,6 @@ export const ViewEventModal = ({ isOpen, onRequestClose, style, eventId, title, 
           </div>
         </div>
         <div>
-          {personsOnEvent.map(person => (
-            <div key={person.id}>
-              <p>{person.name}</p>
-            </div>
-          ))}
         </div>
       </div>
     </Modal>
