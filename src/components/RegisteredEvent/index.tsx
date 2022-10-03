@@ -10,6 +10,7 @@ type EventProps = {
   description: string;
   date: string;
   setEvents: (events: any) => void;
+  persons: any;
 };
 
 const customStyles = {
@@ -23,7 +24,7 @@ const customStyles = {
   },
 }
 
-export const RegisteredEvent = ({id, title, description, date, setEvents}: EventProps) => {
+export const RegisteredEvent = ({id, title, description, date, setEvents, persons}: EventProps) => {
   const [editEventModalIsOpen, setEditEventModalIsOpen] = useState(false)
   const [viewEventModalIsOpen, setViewEventModalIsOpen] = useState(false)
 
@@ -66,7 +67,7 @@ export const RegisteredEvent = ({id, title, description, date, setEvents}: Event
         <button onClick={deleteEvent}>Delete</button>
       </div>
       <EditEventModal isOpen={editEventModalIsOpen} onRequestClose={closeEditEventModal} style={customStyles} eventId={id} setEvents={setEvents} />
-      <ViewEventModal isOpen={viewEventModalIsOpen} onRequestClose={closeViewEventModal} style={customStyles} eventId={id} title={title} description={description} date={formatedDate} />
+      <ViewEventModal isOpen={viewEventModalIsOpen} onRequestClose={closeViewEventModal} style={customStyles} eventId={id} title={title} description={description} date={formatedDate} persons={persons} />
     </div>
   )
 }

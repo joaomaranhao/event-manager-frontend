@@ -120,7 +120,7 @@ export default function Home() {
           </div>
           {display === 'events' ? (
             <div className={styles.display}>
-              {events.length != 0 ? <Events setEvents={setEvents} events={events} /> : <EmptyBox item='an event' />}
+              {events.length != 0 ? <Events setEvents={setEvents} events={events} persons={persons} /> : <EmptyBox item='an event' />}
             </div>
           ) : (
             <div className={styles.display}>

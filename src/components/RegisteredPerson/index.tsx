@@ -16,8 +16,6 @@ export const RegisteredPerson = ({name, id}: Personprops) => {
         <p>{name}</p>
       </div>
       <div className={styles.commands}>
-        <button>View</button>
-        <button>Edit</button>
         <button onClick={deletePerson}>Delete</button>
       </div>
     </div>

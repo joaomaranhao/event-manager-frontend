@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import Modal from 'react-modal'
+import { AddPersonToEventModal } from '../AddPersonToEventModal'
 import styles from './ViewEventModal.module.css'
 
 interface ModalProps {
@@ -11,13 +12,7 @@ interface ModalProps {
   title: string
   description: string
   date: string
-}
-
-interface IEvent {
-  id: string
-  title: string
-  description: string
-  date: string
+  persons: IPerson[]
 }
 
 interface IPerson {
@@ -25,15 +20,24 @@ interface IPerson {
   id: string
 }
 
-export const ViewEventModal = ({ isOpen, onRequestClose, style, eventId, title, description, date}: ModalProps) => {
+export const ViewEventModal = ({ isOpen, onRequestClose, style, eventId, title, description, date, persons}: ModalProps) => {
   const [personsOnEvent, setPersonsOnEvent] = useState<IPerson[]>([])
+  const [addPersonToEvent, setAddPersonToEvent] = useState(false)
+
+  function openAddPersonToEventModal() {
+    setAddPersonToEvent(true)
+  }
+
+  function closeAddPersonToEventModal() {
+    setAddPersonToEvent(false)
+  }
 
   useEffect(() => {
     axios.get(`http://localhost:3333/api/event/${eventId}/person`)
       .then(res => {
         setPersonsOnEvent(res.data)
       })
-  }, [eventId])
+  }, [personsOnEvent, eventId])
 
   return (
     <Modal
@@ -48,7 +52,7 @@ export const ViewEventModal = ({ isOpen, onRequestClose, style, eventId, title, 
             <p>{description}</p>
             <p>{date}</p>
           </div>
-          <button>Add Person</button>
+          <button onClick={openAddPersonToEventModal}>Add Person</button>
         </div>
         <div className={styles.persons}>
           <h3>Persons registered on event:</h3>
@@ -63,6 +67,7 @@ export const ViewEventModal = ({ isOpen, onRequestClose, style, eventId, title, 
         <div>
         </div>
       </div>
+      <AddPersonToEventModal isOpen={addPersonToEvent} onRequestClose={closeAddPersonToEventModal} style={style} persons={persons} eventId={eventId} personsOnEvent={personsOnEvent} setPersonsOnEvent={setPersonsOnEvent} />
     </Modal>
   )
 }
