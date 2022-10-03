@@ -6,4 +6,5 @@
 
 - Clone o repositório
 - Instale as dependências com `yarn`
+- Roda `yarn build` para gerar o build do projeto
 - Rode o projeto com `yarn start`
