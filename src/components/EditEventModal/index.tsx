@@ -46,7 +46,7 @@ export const EditEventModal = ({ isOpen, onRequestClose, style, setEvents, event
       onRequestClose={onRequestClose}
       style={style}
     >
-      <h2 className={styles.title}>Add Event</h2>
+      <h2 className={styles.title}>Edit Event</h2>
       <form className={styles.form} onSubmit={handleAddEvent}>
         <div className={styles.item}>
           <label>Title</label>

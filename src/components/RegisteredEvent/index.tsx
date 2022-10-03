@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useState } from 'react';
 import { EditEventModal } from '../EditEventModal';
+import { ViewEventModal } from '../ViewEventModal';
 import styles from './RegisteredEvent.module.css'
 
 type EventProps = {
@@ -24,6 +25,8 @@ const customStyles = {
 
 export const RegisteredEvent = ({id, title, description, date, setEvents}: EventProps) => {
   const [editEventModalIsOpen, setEditEventModalIsOpen] = useState(false)
+  const [viewEventModalIsOpen, setViewEventModalIsOpen] = useState(false)
+
   const formatedDate = new Date(date).toLocaleDateString('pt-BR', {
     day: '2-digit',
     month: 'long',
@@ -42,6 +45,14 @@ export const RegisteredEvent = ({id, title, description, date, setEvents}: Event
     setEditEventModalIsOpen(false)
   }
 
+  function openViewEventModal() {
+    setViewEventModalIsOpen(true)
+  }
+
+  function closeViewEventModal() {
+    setViewEventModalIsOpen(false)
+  }
+
   return (
     <div className={styles.registeredEvent}>
       <div className={styles.eventData}>
@@ -50,11 +61,12 @@ export const RegisteredEvent = ({id, title, description, date, setEvents}: Event
         <p>{formatedDate}</p>
       </div>
       <div className={styles.commands}>
-        <button>View</button>
+        <button onClick={openViewEventModal}>View</button>
         <button onClick={openEditEventModal}>Edit</button>
         <button onClick={deleteEvent}>Delete</button>
       </div>
       <EditEventModal isOpen={editEventModalIsOpen} onRequestClose={closeEditEventModal} style={customStyles} eventId={id} setEvents={setEvents} />
+      <ViewEventModal isOpen={viewEventModalIsOpen} onRequestClose={closeViewEventModal} style={customStyles} eventId={id} title={title} description={description} date={formatedDate} />
     </div>
   )
 }

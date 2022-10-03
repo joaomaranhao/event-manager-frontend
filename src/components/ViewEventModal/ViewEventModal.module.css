@@ -1,0 +1,40 @@
+.modalContainer {
+  width: 70vw;
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.eventData {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.eventData > button {
+  margin-top: 1rem;
+  font-size: 1.5rem;
+  text-align: center;
+  border: 1px solid #eaeaea;
+  border-radius: 10px;
+  padding: 0.5rem 1rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #ccc;
+  cursor: pointer;
+}
+
+.eventData > button:hover {
+  border-color: #0070f3;
+}
+
+.persons {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-top: 1px solid #ccc;
+}

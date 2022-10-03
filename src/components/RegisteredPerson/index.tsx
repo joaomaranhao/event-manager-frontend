@@ -6,14 +6,14 @@ type Personprops = {
   name: string
 };
 
-export const RegisteredPerson = (registeredEvent: Personprops) => {
+export const RegisteredPerson = ({name, id}: Personprops) => {
   function deletePerson() {
-    axios.delete(`http://localhost:3333/api/person/${registeredEvent.id}`);
+    axios.delete(`http://localhost:3333/api/person/${id}`);
   }
   return (
     <div className={styles.registeredEvent}>
       <div className={styles.eventData}>
-        <p>{registeredEvent.name}</p>
+        <p>{name}</p>
       </div>
       <div className={styles.commands}>
         <button>View</button>
